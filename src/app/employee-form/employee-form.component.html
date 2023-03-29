@@ -1,0 +1,68 @@
+<nz-layout>
+    <nz-header>
+      <div class="title">
+       Employee Login
+      </div>
+    </nz-header>
+    <nz-content>
+        <div class="container" style="margin-top: 1rem;">
+        <div class="row">
+            <div class="col-6">
+                <nz-form [formGroup]="form"  (ngSubmit)="onSubmit()">
+                    <nz-form-item>
+                      <nz-form-label nzRequired>First Name</nz-form-label>
+                      <nz-form-control>
+                        <input nz-input formControlName="firstName" />
+                      </nz-form-control>
+                    </nz-form-item>
+                    <nz-form-item>
+                      <nz-form-label nzRequired>Last Name</nz-form-label>
+                      <nz-form-control>
+                        <input nz-input formControlName="lastName" />
+                      </nz-form-control>
+                    </nz-form-item>
+                    <nz-form-item>
+                      <nz-form-label nzRequired>Email</nz-form-label>
+                      <nz-form-control>
+                        <input nz-input formControlName="email" />
+                      </nz-form-control>
+                    </nz-form-item>
+                   
+                    <nz-form-item>
+                      <nz-form-control>
+                        <button nz-button nzType="primary" type="submit" (click)="onSubmit()" [disabled]="form.invalid">Submit</button>
+                      </nz-form-control>
+                    </nz-form-item>
+                  </nz-form> 
+            </div>
+        </div>
+        <div class="row" *ngIf="dataSet">
+            <div class="col">
+                <nz-table #basicTable [nzData]="dataSet">
+                    <thead>
+                      <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                       
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let data of basicTable.data">
+                        <td>{{data.firstName}}</td>
+                        <td>{{data.lastName}}</td>
+                        <td>{{data.email}}</td>
+                        
+                      </tr>
+                    </tbody>
+                  </nz-table>
+            </div>
+        </div>
+    </div>
+    </nz-content>
+  </nz-layout>
+
+
+
+
+  
